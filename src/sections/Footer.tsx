@@ -12,6 +12,9 @@ if (typeof window !== "undefined") {
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
 
+  // Dynamic current year
+  const currentYear = new Date().getFullYear();
+
   useGSAP(
     () => {
       gsap.from(".footer-content", {
@@ -62,7 +65,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 font-bold uppercase text-sm tracking-tight">
               <li>
                 <a
-                  href="#"
+                  href="#services"
                   className="hover:text-neutral-400 transition-colors"
                 >
                   Expertise
@@ -70,15 +73,15 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#about"
                   className="hover:text-neutral-400 transition-colors"
                 >
-                  Workflow
+                  About
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#trusted-by"
                   className="hover:text-neutral-400 transition-colors"
                 >
                   Trusted By
@@ -86,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact-us"
                   className="hover:text-neutral-400 transition-colors"
                 >
                   Contact
@@ -103,7 +106,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 font-bold uppercase text-sm tracking-tight">
               <li>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/goto_friend/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-neutral-400 transition-colors"
                 >
                   Instagram
@@ -111,7 +116,9 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/go-to-friend/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-neutral-400 transition-colors"
                 >
                   LinkedIn
@@ -125,14 +132,7 @@ export default function Footer() {
                   Threads
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="hover:text-neutral-400 transition-colors"
-                >
-                  Behance
-                </a>
-              </li>
+              <li></li>
             </ul>
           </div>
         </div>
@@ -140,7 +140,8 @@ export default function Footer() {
         {/* BOTTOM LEGAL BAR */}
         <div className="mt-20 md:mt-32 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
-            <span>© 2026 GO-TO FRIEND</span>
+            {/* --- DYNAMIC YEAR HERE --- */}
+            <span>© {currentYear} GO-TO FRIEND</span>
             <span className="hidden md:inline">/</span>
             <span>ALL RIGHTS RESERVED</span>
           </div>

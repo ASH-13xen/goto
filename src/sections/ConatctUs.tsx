@@ -11,6 +11,7 @@ import {
   Linkedin,
   AtSign,
   ArrowUpRight,
+  Mail, // Added Mail icon
 } from "lucide-react";
 
 if (typeof window !== "undefined") {
@@ -73,7 +74,7 @@ export default function ContactSection() {
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col gap-12">
-        {/* SECTION HEADER (Single line, Hero-style font) */}
+        {/* SECTION HEADER */}
         <div className="flex flex-col items-start gap-4">
           <div className="contact-title bg-black text-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest">
             Ready to build?
@@ -86,55 +87,81 @@ export default function ContactSection() {
         {/* CONTACT GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* LEFT: Quick Contact Cards */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 md:gap-6">
+            {/* Direct Call Card */}
             <a
-              href="tel:+91XXXXXXXXXX"
-              className="contact-card group flex items-center justify-between p-8 bg-white border-2 border-black hover:bg-black hover:text-white transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+              href="tel:+919203411613"
+              className="contact-card group flex items-center justify-between p-6 md:p-7 bg-white border-2 border-black hover:bg-black hover:text-white transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
             >
-              <div className="flex items-center gap-6">
-                <Phone className="w-8 h-8 md:w-12 md:h-12" />
+              <div className="flex items-center gap-4 md:gap-6">
+                <Phone className="w-8 h-8 md:w-10 md:h-10 shrink-0" />
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest opacity-50">
                     Direct Call
                   </p>
-                  <p className="text-2xl md:text-4xl font-black">
-                    +91-93013 14545
+                  <p className="text-xl md:text-3xl font-black">
+                    +91-9203411613
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all" />
+              <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-0 group-hover:opacity-100 transition-all shrink-0" />
             </a>
 
+            {/* WhatsApp Card */}
             <a
-              href="https://wa.me/919301314545"
-              className="contact-card group flex items-center justify-between p-8 bg-white border-2 border-black hover:bg-black hover:text-white transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+              href="https://wa.me/919203411613"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-card group flex items-center justify-between p-6 md:p-7 bg-white border-2 border-black hover:bg-black hover:text-white transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
             >
-              <div className="flex items-center gap-6">
-                <MessageCircle className="w-8 h-8 md:w-12 md:h-12" />
+              <div className="flex items-center gap-4 md:gap-6">
+                <MessageCircle className="w-8 h-8 md:w-10 md:h-10 shrink-0" />
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest opacity-50">
                     WhatsApp
                   </p>
-                  <p className="text-2xl md:text-4xl font-black">
-                    Chat with us
+                  <p className="text-xl md:text-3xl font-black">Chat with us</p>
+                </div>
+              </div>
+              <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-0 group-hover:opacity-100 transition-all shrink-0" />
+            </a>
+
+            {/* NEW: Email Card */}
+            <a
+              href="mailto:gotofriend@gmail.com"
+              className="contact-card group flex items-center justify-between p-6 md:p-7 bg-white border-2 border-black hover:bg-black hover:text-white transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+            >
+              <div className="flex items-center gap-4 md:gap-6 overflow-hidden">
+                <Mail className="w-8 h-8 md:w-10 md:h-10 shrink-0" />
+                <div className="truncate">
+                  <p className="text-xs font-bold uppercase tracking-widest opacity-50">
+                    Email
+                  </p>
+                  {/* Truncated slightly for mobile so it doesn't break layout */}
+                  <p className="text-xl md:text-3xl font-black truncate max-w-[200px] sm:max-w-none">
+                    gotofriend@gmail.com
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all" />
+              <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 opacity-0 group-hover:opacity-100 transition-all shrink-0 ml-2" />
             </a>
 
             {/* SOCIAL BAR */}
             <div className="contact-card grid grid-cols-3 gap-4">
               <a
                 href="https://www.instagram.com/goto_friend/"
-                className="flex flex-col items-center justify-center py-8 bg-white border-2 border-black hover:invert transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center py-6 bg-white border-2 border-black hover:invert transition-all duration-300"
               >
                 <Instagram className="w-6 h-6 mb-2" />
                 <span className="text-[10px] font-bold uppercase">Insta</span>
               </a>
               <a
                 href="https://www.linkedin.com/company/go-to-friend/"
-                className="flex flex-col items-center justify-center py-8 bg-white border-2 border-black hover:invert transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center py-6 bg-white border-2 border-black hover:invert transition-all duration-300"
               >
                 <Linkedin className="w-6 h-6 mb-2" />
                 <span className="text-[10px] font-bold uppercase">
@@ -143,7 +170,7 @@ export default function ContactSection() {
               </a>
               <a
                 href="#"
-                className="flex flex-col items-center justify-center py-8 bg-white border-2 border-black hover:invert transition-all duration-300"
+                className="flex flex-col items-center justify-center py-6 bg-white border-2 border-black hover:invert transition-all duration-300"
               >
                 <AtSign className="w-6 h-6 mb-2" />
                 <span className="text-[10px] font-bold uppercase">Threads</span>

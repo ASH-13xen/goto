@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
@@ -111,7 +113,7 @@ export default function BusinessPage() {
     >
       <Navbar2 />
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden px-4 py-24">
+      <section className="relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-4 py-24">
         <video
           autoPlay
           loop

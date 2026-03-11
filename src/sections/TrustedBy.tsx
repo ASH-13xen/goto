@@ -75,6 +75,7 @@ export default function TrustedBySection() {
       ref={sectionRef}
       className="relative w-full min-h-screen bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-neutral-800 via-black to-black text-white font-sans py-24 px-4 md:px-12 flex flex-col items-center overflow-hidden"
     >
+      <section id="trusted-by"></section>
       {/* TEXT INTRO */}
       <div className="w-full max-w-7xl mx-auto flex flex-col items-start lg:items-center text-left lg:text-center z-10">
         <h2 className="trusted-text text-[10vw] md:text-[6vw] font-black tracking-tighter uppercase leading-none">

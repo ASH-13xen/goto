@@ -125,22 +125,23 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  // --- NEW WHATSAPP SUBMIT HANDLER FOR HERO FORM ---
+  // --- WHATSAPP SUBMIT HANDLER ---
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const subject = formData.get("subject") as string;
     const body = formData.get("body") as string;
 
     const whatsappText = `*New Meeting Request (Hero Form)*
 
+*Name:* ${name}
 *Email:* ${email}
 *Subject:* ${subject}
 *Message:* ${body}`;
 
-    // Added 91 (India country code) as WhatsApp API requires it without the + sign
     const targetNumber = "918817398431";
     const encodedText = encodeURIComponent(whatsappText);
     const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodedText}`;
@@ -244,7 +245,7 @@ export default function HeroSection() {
               </p>
             </div>
 
-            {/* --- NEW CONTACT US BUTTON --- */}
+            {/* --- CONTACT US BUTTON --- */}
             <button
               onClick={() => setIsContactOpen(true)}
               className={`mt-6 md:mt-8 w-fit bg-white text-black font-black uppercase tracking-widest py-3 px-8 hover:bg-neutral-200 transition-all shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] active:translate-y-1 active:shadow-none ${
@@ -255,9 +256,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          {/* Drag Handle 
-              CRITICAL FIX: Added `touch-none select-none` to prevent page scrolling during drag 
-          */}
+          {/* Drag Handle */}
           <div
             className={`absolute cursor-pointer flex items-center justify-center transition-colors group z-20 touch-none select-none ${
               isMobile
@@ -269,7 +268,6 @@ export default function HeroSection() {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
           >
-            {/* Handle Grip Lines (Redesigned for better visibility on both platforms) */}
             {isMobile ? (
               <div className="flex flex-col gap-1.5 items-center justify-center translate-y-2 relative">
                 <span
@@ -330,16 +328,33 @@ export default function HeroSection() {
               </h2>
             </div>
 
-            {/* --- ATTACHED THE SUBMIT HANDLER HERE --- */}
-            <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleFormSubmit} className="flex flex-col gap-3">
+              {/* --- NEW NAME FIELD --- */}
               <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="name"
+                  className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="John Doe"
+                  className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
+                  required
+                />
+              </div>
+
+              {/* EMAIL FIELD */}
+              <div className="flex flex-col gap-1 mt-1">
                 <label
                   htmlFor="email"
                   className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
                 >
                   Your Email
                 </label>
-                {/* ADDED name="email" */}
                 <input
                   type="email"
                   id="email"
@@ -350,14 +365,14 @@ export default function HeroSection() {
                 />
               </div>
 
-              <div className="flex flex-col gap-1 mt-2">
+              {/* SUBJECT FIELD */}
+              <div className="flex flex-col gap-1 mt-1">
                 <label
                   htmlFor="subject"
                   className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
                 >
                   Subject
                 </label>
-                {/* ADDED name="subject" */}
                 <input
                   type="text"
                   id="subject"
@@ -368,18 +383,18 @@ export default function HeroSection() {
                 />
               </div>
 
-              <div className="flex flex-col gap-1 mt-2">
+              {/* MESSAGE FIELD - rows reduced to 3 to balance size */}
+              <div className="flex flex-col gap-1 mt-1">
                 <label
                   htmlFor="body"
                   className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
                 >
                   Message
                 </label>
-                {/* ADDED name="body" */}
                 <textarea
                   id="body"
                   name="body"
-                  rows={4}
+                  rows={3}
                   placeholder="Tell us about your goals..."
                   className="form-element w-full border-2 border-black bg-transparent p-3 focus:outline-none focus:border-neutral-400 transition-colors font-medium mt-1 resize-none rounded-none"
                   required
@@ -388,7 +403,7 @@ export default function HeroSection() {
 
               <button
                 type="submit"
-                className="form-element mt-4 w-full bg-black text-white font-black uppercase tracking-widest py-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                className="form-element mt-3 w-full bg-black text-white font-black uppercase tracking-widest py-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
               >
                 Send Request
               </button>

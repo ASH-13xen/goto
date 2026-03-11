@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useRef, useState } from "react";
@@ -162,14 +163,14 @@ const ExpertiseTitle = () => {
       </div>
 
       {/* Subtext */}
-      <p className="sub-element mt-4 md:mt-8 max-w-[280px] md:max-w-sm text-sm md:text-lg font-medium tracking-wide text-neutral-600 leading-relaxed">
+      <p className="sub-element mt-4 md:mt-8 max-w-70 md:max-w-sm text-sm md:text-lg font-medium tracking-wide text-neutral-600 leading-relaxed">
         We engineer high-impact strategies, turning digital presence into
         undeniable brand authority.
       </p>
 
       {/* Scroll/Swipe Indicator */}
       <div className="sub-element mt-8 md:mt-12 flex items-center gap-4">
-        <div className="scroll-line w-12 md:w-16 h-[2px] bg-black"></div>
+        <div className="scroll-line w-12 md:w-16 h-0.5 bg-black"></div>
         <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold text-black">
           <span className="lg:hidden">Swipe to explore</span>
           <span className="hidden lg:inline">Scroll to explore</span>
@@ -205,7 +206,7 @@ const ExpertiseSlider = ({
                 alt={service.title}
                 className="w-full h-full object-cover  transition-all duration-700 ease-in-out scale-100 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent opacity-90" />
             </div>
 
             {/* Card Content */}
@@ -219,7 +220,7 @@ const ExpertiseSlider = ({
                 </h3>
               </div>
 
-              <div className="w-full h-[2px] bg-white mt-4 md:mt-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <div className="w-full h-0.5 bg-white mt-4 md:mt-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </div>
           </Link>
         ))}

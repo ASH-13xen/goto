@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import React, { useRef } from "react";
@@ -77,7 +78,7 @@ export default function ManifestoSection() {
 
       {/* --- MASSIVE TYPOGRAPHY --- */}
       {/* Changed md:mb-16 to md:mb-12 to bring the cards slightly closer to the text on laptop */}
-      <div className="relative w-full max-w-[1600px] text-center z-20 px-4 pointer-events-none mb-12 md:mb-12">
+      <div className="relative w-full max-w-400 text-center z-20 px-4 pointer-events-none mb-12 md:mb-12">
         {/* Removed the invalid md:mt-100 class which was pushing the heading completely off-screen */}
         <span className="text-sm md:text-2xl font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4 md:mb-6 block">
           Why Go-To Friend?
@@ -101,7 +102,7 @@ export default function ManifestoSection() {
           {pillars.map((pillar) => (
             <div
               key={pillar.id}
-              className="pillar-card relative bg-[#0a0a0a] border border-white/10 p-4 md:p-8 flex flex-col justify-between group hover:border-white/30 hover:bg-neutral-900 transition-all duration-500 shrink-0 w-full md:w-[calc(33.333%-3rem)] min-h-[90px] md:min-h-[10px] rounded-xl"
+              className="pillar-card relative bg-[#0a0a0a] border border-white/10 p-4 md:p-8 flex flex-col justify-between group hover:border-white/30 hover:bg-neutral-900 transition-all duration-500 shrink-0 w-full md:w-[calc(33.333%-3rem)] min-h-22.5 md:min-h-2.5 rounded-xl"
             >
               <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-xl" />
 

@@ -1,6 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -132,7 +136,7 @@ export default function InfluencerPage() {
       {/* --- 1. HERO SECTION (KINETIC TYPOGRAPHY) --- */}
       <section
         onMouseMove={handleMouseMove}
-        className="relative w-full h-[100dvh] flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-black"
+        className="relative w-full h-dvh flex flex-col items-center justify-center text-center px-4 overflow-hidden bg-black"
       >
         <Navbar2 />
         {/* PURE CSS BACKGROUND: No files needed. Guaranteed to show up. */}
@@ -233,7 +237,7 @@ export default function InfluencerPage() {
           {flashbackMedia.map((media, i) => (
             <div
               key={i}
-              className={`parallax-photo absolute w-[60vw] sm:w-[45vw] md:w-[25vw] aspect-[4/5] p-3 md:p-4 bg-neutral-100 shadow-2xl ${
+              className={`parallax-photo absolute w-[60vw] sm:w-[45vw] md:w-[25vw] aspect-4/5 p-3 md:p-4 bg-neutral-100 shadow-2xl ${
                 i === 0
                   ? "top-[5%] left-[5%] md:top-[10%] md:left-[10%]"
                   : i === 1
@@ -303,29 +307,3 @@ export default function InfluencerPage() {
 }
 
 // Sub-component for the Roster Marquee
-function RosterCard({ inf }: { inf: any }) {
-  return (
-    // Active state scales better on touch devices
-    <div className="group relative w-full aspect-[3/4] bg-neutral-900 overflow-hidden cursor-crosshair rounded-lg md:rounded-none">
-      <img
-        src={inf.img}
-        alt={inf.name}
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-active:grayscale-0 md:group-hover:scale-105 transition-all duration-700"
-      />
-      {/* Stats Overlay on Hover/Tap */}
-      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4 md:p-6">
-        <h4 className="text-xl md:text-3xl font-black uppercase translate-y-2 group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500 leading-none">
-          {inf.name}
-        </h4>
-        <div className="flex gap-2 md:gap-4 mt-2 md:mt-3 translate-y-2 group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-500 delay-75">
-          <span className="bg-white text-black px-2 py-1 text-[8px] md:text-xs font-bold uppercase tracking-widest rounded-full">
-            {inf.reach}
-          </span>
-          <span className="border border-white/30 text-white px-2 py-1 text-[8px] md:text-xs font-bold uppercase tracking-widest rounded-full">
-            {inf.niche}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}

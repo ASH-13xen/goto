@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -184,7 +183,7 @@ export default function OutdoorPage() {
       className="bg-black text-white min-h-screen font-sans overflow-x-hidden selection:bg-white selection:text-black"
     >
       {/* SECTION 1: HERO (THE SLAP) */}
-      <section className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden px-4 py-24">
+      <section className="relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-4 py-24">
         <Navbar2 />
         <div
           className="absolute inset-0 z-0 pointer-events-none opacity-100"
@@ -223,20 +222,20 @@ export default function OutdoorPage() {
       </section>
 
       {/* SECTION 2: THE ANTI-AD MANIFESTO */}
-      <section className="manifesto-container relative h-[100dvh] bg-[#050505] flex items-center justify-center px-4 md:px-6 border-t border-neutral-900 overflow-hidden">
+      <section className="manifesto-container relative h-dvh bg-[#050505] flex items-center justify-center px-4 md:px-6 border-t border-neutral-900 overflow-hidden">
         <div className="relative z-10 flex flex-col items-center text-center max-w-6xl w-full">
           <div className="text-1 flex flex-col items-center gap-2 md:gap-4 w-full">
             <div className="relative inline-block w-fit">
-              <h2 className="text-[6.5vw] md:text-[5vw] font-black uppercase leading-[1] tracking-tighter text-neutral-400 whitespace-nowrap">
+              <h2 className="text-[6.5vw] md:text-[5vw] font-black uppercase leading-none tracking-tighter text-neutral-400 whitespace-nowrap">
                 People ignore billboards.
               </h2>
-              <div className="strike-line absolute top-1/2 left-0 w-full h-1 md:h-3 bg-white -translate-y-1/2 scale-x-0 rotate-[-2deg] mix-blend-screen"></div>
+              <div className="strike-line absolute top-1/2 left-0 w-full h-1 md:h-3 bg-white -translate-y-1/2 scale-x-0 -rotate-2 mix-blend-screen"></div>
             </div>
             <div className="relative inline-block w-fit">
-              <h2 className="text-[6.5vw] md:text-[5vw] font-black uppercase leading-[1] tracking-tighter text-neutral-400 whitespace-nowrap">
+              <h2 className="text-[6.5vw] md:text-[5vw] font-black uppercase leading-none tracking-tighter text-neutral-400 whitespace-nowrap">
                 They look at their phones.
               </h2>
-              <div className="strike-line absolute top-1/2 left-0 w-full h-1 md:h-3 bg-white -translate-y-1/2 scale-x-0 rotate-[-2deg] mix-blend-screen"></div>
+              <div className="strike-line absolute top-1/2 left-0 w-full h-1 md:h-3 bg-white -translate-y-1/2 scale-x-0 -rotate-2 mix-blend-screen"></div>
             </div>
           </div>
 
@@ -267,7 +266,7 @@ export default function OutdoorPage() {
                 <span className="text-6xl md:text-7xl font-black text-white/5 mb-6 md:mb-12">
                   {item.id}
                 </span>
-                <div className="flex flex-col flex-grow justify-end">
+                <div className="flex flex-col grow justify-end">
                   <h4 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-4 text-white">
                     {item.title}
                   </h4>
@@ -282,7 +281,7 @@ export default function OutdoorPage() {
       </section>
 
       {/* SECTION 4: THE STREET LEDGER (Dynamic Master-Detail Panel) */}
-      <section className="street-ledger-section relative w-full bg-[#030303] border-t border-neutral-900 flex flex-col md:flex-row h-[100dvh]">
+      <section className="street-ledger-section relative w-full bg-[#030303] border-t border-neutral-900 flex flex-col md:flex-row h-dvh">
         {/* Left Side: Scrollable Index */}
         <div className="w-full md:w-[40%] h-[40vh] md:h-full flex flex-col pl-6 md:pl-16 pr-4 md:pr-8 border-b md:border-b-0 md:border-r border-neutral-900 relative z-20">
           <div className="pt-8 md:pt-[15vh] pb-6 bg-[#030303] z-10 sticky top-0">
@@ -341,7 +340,7 @@ export default function OutdoorPage() {
                 />
 
                 {/* Gradient Overlay to ensure text legibility */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-0"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent z-0"></div>
 
                 <div className="relative z-10 w-full flex flex-col md:flex-row md:items-end justify-between gap-6 md:gap-4">
                   <div>

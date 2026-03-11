@@ -138,7 +138,7 @@ export default function ContactSection() {
                     Email
                   </p>
                   {/* Truncated slightly for mobile so it doesn't break layout */}
-                  <p className="text-xl md:text-3xl font-black truncate max-w-[200px] sm:max-w-none">
+                  <p className="text-xl md:text-3xl font-black truncate max-w-50 sm:max-w-none">
                     gotofriend@gmail.com
                   </p>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactSection() {
           </div>
 
           {/* RIGHT: Embedded Map */}
-          <div className="map-container relative w-full h-[400px] lg:h-full border-2 border-black grayscale contrast-[1.2] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+          <div className="map-container relative w-full h-100 lg:h-full border-2 border-black grayscale contrast-[1.2] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <iframe
               title="Our Location"
               src="https://maps.google.com/maps?q=3rd%20Floor,%20H.R.%20Vertex,%20Plot%20No%2076,%20Sec%20-%203,%20behind%20Apollo%20Pharmacy,%20Geetanjali%20Colony,%20Shankar%20Nagar,%20Raipur,%20Chhattisgarh%20492004&t=&z=15&ie=UTF8&iwloc=&output=embed"

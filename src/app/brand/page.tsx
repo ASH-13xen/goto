@@ -200,7 +200,7 @@ export default function BrandPage() {
       <Navbar2 />
 
       {/* --- 1. THE CLASSIFIED DOSSIER HERO --- */}
-      <section className="dossier-hero relative w-full h-[100dvh] flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden px-6 md:px-12 lg:px-24">
+      <section className="dossier-hero relative w-full h-dvh flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden px-6 md:px-12 lg:px-24">
         {/* Eyebrow Label */}
         <div className="absolute top-24 md:top-32 left-6 md:left-12 lg:left-24 z-20">
           <p className="text-neutral-500 tracking-[0.3em] uppercase text-[10px] md:text-sm font-bold">
@@ -238,14 +238,14 @@ export default function BrandPage() {
           <p className="text-neutral-500 font-mono text-[10px] md:text-xs uppercase tracking-widest font-bold">
             Scroll to decrypt
           </p>
-          <div className="w-[1px] h-8 bg-neutral-500/50 relative overflow-hidden">
+          <div className="w-px h-8 bg-neutral-500/50 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-bounce" />
           </div>
         </div>
       </section>
 
       {/* --- 2. THE ANTI-AGENCY MANIFESTO --- */}
-      <section className="manifesto-section relative w-full h-[100dvh] bg-[#050505] flex items-center justify-center border-y border-neutral-900 overflow-hidden px-4 md:px-6">
+      <section className="manifesto-section relative w-full h-dvh bg-[#050505] flex items-center justify-center border-y border-neutral-900 overflow-hidden px-4 md:px-6">
         {/* THE BAD SECTION */}
         <div className="bad-section absolute z-10 flex flex-col items-center text-center w-full max-w-5xl">
           <p className="text-neutral-500 tracking-[0.3em] uppercase text-xs md:text-sm font-bold mb-10 md:mb-16">
@@ -333,7 +333,7 @@ export default function BrandPage() {
         {monolithProjects.map((project, i) => (
           <div
             key={i}
-            className="monolith-slab sticky top-0 w-full h-[100dvh] overflow-hidden bg-black flex items-center justify-center border-t border-white/10"
+            className="monolith-slab sticky top-0 w-full h-dvh overflow-hidden bg-black flex items-center justify-center border-t border-white/10"
             style={{ zIndex: i + 10 }}
           >
             <video
@@ -344,7 +344,7 @@ export default function BrandPage() {
               src={project.video}
               className="absolute inset-0 w-full h-full object-cover opacity-60"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-black/80" />
 
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 h-full flex flex-col justify-between py-12 md:py-24">
               <div className="flex justify-between items-start w-full">

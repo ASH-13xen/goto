@@ -122,9 +122,9 @@ export default function BusinessPage() {
           className="absolute inset-0 w-full h-full object-cover opacity-30 z-0"
           src="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/80 to-black z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/80 to-black z-0 pointer-events-none" />
 
-        <div className="absolute inset-0 z-0 flex flex-col justify-center gap-4 md:gap-8 overflow-hidden pointer-events-none opacity-[0.15] md:opacity-20 rotate-[-2deg] scale-110">
+        <div className="absolute inset-0 z-0 flex flex-col justify-center gap-4 md:gap-8 overflow-hidden pointer-events-none opacity-[0.15] md:opacity-20 -rotate-2 scale-110">
           {[...Array(7)].map((_, i) => (
             <div
               key={i}
@@ -224,7 +224,7 @@ export default function BusinessPage() {
                   alt={card.title}
                   className="w-full h-full object-cover grayscale"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/80 to-transparent" />
               </div>
 
               <h4 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-4 relative z-10 text-white transform group-hover:-translate-y-2 transition-transform duration-500">
@@ -256,7 +256,7 @@ export default function BusinessPage() {
             {LOGO_SHOWCASE.map((logo, i) => (
               <div
                 key={i}
-                className="aspect-[4/3] border border-neutral-800 rounded-xl overflow-hidden bg-[#0a0a0a] flex items-center justify-center group relative"
+                className="aspect-4/3 border border-neutral-800 rounded-xl overflow-hidden bg-[#0a0a0a] flex items-center justify-center group relative"
               >
                 <img
                   src={logo.img}

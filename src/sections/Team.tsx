@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useRef } from "react";
@@ -86,7 +87,7 @@ export default function TeamSection() {
       {teamMembers.map((member) => (
         <div
           key={`bg-${member.id}`}
-          className={`absolute inset-0 bg-gradient-to-br ${member.gradient} transition-opacity duration-700 ease-in-out z-0 ${
+          className={`absolute inset-0 bg-linear-to-br ${member.gradient} transition-opacity duration-700 ease-in-out z-0 ${
             activeMember === member.id ? "opacity-100" : "opacity-0"
           }`}
         />
@@ -171,7 +172,7 @@ export default function TeamSection() {
               <img
                 src={teamMembers.find((m) => m.id === activeMember)?.image}
                 alt="Team Member"
-                className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full object-cover grayscale-20 hover:grayscale-0 transition-all duration-700"
               />
             </div>
           ) : (

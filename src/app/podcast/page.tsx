@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useState, useRef } from "react";
@@ -104,7 +106,7 @@ export default function PodcastPage() {
       className="bg-black text-white min-h-screen font-sans overflow-x-hidden selection:bg-white selection:text-black"
     >
       {/* --- 1. HERO: THE ECHO CHAMBER --- */}
-      <section className="relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative h-dvh flex flex-col items-center justify-center overflow-hidden">
         <Navbar />
         {/* Kinetic Ripple Effect */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60">
@@ -145,7 +147,7 @@ export default function PodcastPage() {
           {/* Sticky Stack Container */}
           <div className="relative space-y-4 md:space-y-12 pb-[10vh]">
             {/* Step 01 */}
-            <div className="process-step sticky top-[10vh] w-full bg-[#0a0a0a] border border-neutral-800 p-8 md:p-16 rounded-[2rem] shadow-[0_-20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
+            <div className="process-step sticky top-[10vh] w-full bg-[#0a0a0a] border border-neutral-800 p-8 md:p-16 rounded-4xl shadow-[0_-20px_40px_rgba(0,0,0,0.8)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
               <p className="text-neutral-500 tracking-[0.3em] uppercase text-xs md:text-sm font-bold mb-4">
                 01 // The Architecture
               </p>
@@ -160,7 +162,7 @@ export default function PodcastPage() {
             </div>
 
             {/* Step 02 */}
-            <div className="process-step sticky top-[15vh] w-full bg-[#111111] border border-neutral-700 p-8 md:p-16 rounded-[2rem] shadow-[0_-20px_40px_rgba(0,0,0,0.9)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
+            <div className="process-step sticky top-[15vh] w-full bg-[#111111] border border-neutral-700 p-8 md:p-16 rounded-4xl shadow-[0_-20px_40px_rgba(0,0,0,0.9)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
               <p className="text-neutral-500 tracking-[0.3em] uppercase text-xs md:text-sm font-bold mb-4">
                 02 // The Broadcast
               </p>
@@ -175,7 +177,7 @@ export default function PodcastPage() {
             </div>
 
             {/* Step 03 */}
-            <div className="process-step sticky top-[20vh] w-full bg-[#1a1a1a] border border-neutral-600 p-8 md:p-16 rounded-[2rem] shadow-[0_-20px_50px_rgba(0,0,0,1)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
+            <div className="process-step sticky top-[20vh] w-full bg-[#1a1a1a] border border-neutral-600 p-8 md:p-16 rounded-4xl shadow-[0_-20px_50px_rgba(0,0,0,1)] flex flex-col justify-center min-h-[40vh] md:min-h-[50vh]">
               <p className="text-neutral-400 tracking-[0.3em] uppercase text-xs md:text-sm font-bold mb-4">
                 03 // The Syndication
               </p>
@@ -224,7 +226,7 @@ export default function PodcastPage() {
             {[...GUESTS, ...GUESTS].map((guest, idx) => (
               <div
                 key={idx}
-                className="group relative w-[250px] md:w-[350px] aspect-[4/5] bg-neutral-900 rounded-xl overflow-hidden shrink-0 cursor-default"
+                className="group relative w-62.5 md:w-87.5 aspect-4/5 bg-neutral-900 rounded-xl overflow-hidden shrink-0 cursor-default"
               >
                 <img
                   src={guest.img}
@@ -233,10 +235,10 @@ export default function PodcastPage() {
                 />
                 {/* YouTube Red Play Button Hint */}
                 <div className="absolute top-4 right-4 w-8 h-8 md:w-10 md:h-10 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-2 group-hover:translate-y-0">
-                  <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-1" />
+                  <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-8 border-l-white border-b-[5px] border-b-transparent ml-1" />
                 </div>
                 {/* Info Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute inset-x-0 bottom-0 p-6 bg-linear-to-t from-black via-black/80 to-transparent flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <h4 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white mb-1">
                     {guest.name}
                   </h4>

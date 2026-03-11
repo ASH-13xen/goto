@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -114,7 +116,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[9999] flex flex-col justify-end invisible bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-9999 flex flex-col justify-end invisible bg-black/60 backdrop-blur-sm"
     >
       <div className="absolute inset-0 cursor-pointer" onClick={onClose} />
 
@@ -133,7 +135,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           Close
         </button>
 
-        <div className="flex-grow overflow-y-auto px-6 md:px-16 pt-20 pb-12 custom-scrollbar">
+        <div className="grow overflow-y-auto px-6 md:px-16 pt-20 pb-12 custom-scrollbar">
           {!isSuccess ? (
             <>
               <div

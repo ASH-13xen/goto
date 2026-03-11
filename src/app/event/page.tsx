@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -408,29 +411,6 @@ const EVENTS = [
       "link12",
     ],
   },
-  // {
-  //   id: "EVT-18",
-  //   title: "GARBA 1.1",
-  //   video: "https://www.w3schools.com/html/mov_bbb.mp4",
-  //   video2: "https://www.w3schools.com/html/mov_bbb.mp4",
-  //   clientName: "Spotify Creators",
-  //   description:
-  //     "We transformed a massive raw space into the ultimate experiential activation. Attendees engaged with the brand environment, generating unprecedented social reach and community impact.",
-  //   images: [
-  //     "link1",
-  //     "link2",
-  //     "link3",
-  //     "link4",
-  //     "link5",
-  //     "link6",
-  //     "link7",
-  //     "link8",
-  //     "link9",
-  //     "link10",
-  //     "link11",
-  //     "link12",
-  //   ],
-  // },
   {
     id: "EVT-18",
     title: "NEW YEAR PARTY",
@@ -507,6 +487,7 @@ const AFTERMATH_IMAGES = [
   "/events/imgs/img24.jpg",
   "/events/imgs/img25.jpg",
 ];
+
 export default function EventPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -515,7 +496,7 @@ export default function EventPage() {
     null,
   );
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [, setIsContactOpen] = useState(false);
 
   const orbitRef = useRef({ angle: 0 });
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -669,9 +650,9 @@ export default function EventPage() {
     });
   }, [activeIndex, selectedEvent]);
 
-  // Modal Gallery Animations
+  // Modal Gallery Animations (REMOVED: && selectedEvent.visible)
   useGSAP(() => {
-    if (isGalleryOpen && selectedEvent && selectedEvent.visible) {
+    if (isGalleryOpen && selectedEvent) {
       gsap.to(peekCardRef.current, { y: 200, duration: 0.4 });
       gsap.to(galleryRef.current, {
         autoAlpha: 1,
@@ -679,7 +660,7 @@ export default function EventPage() {
         duration: 0.5,
         ease: "back.out(1.2)",
       });
-    } else if (selectedEvent && !isGalleryOpen && selectedEvent.visible) {
+    } else if (selectedEvent && !isGalleryOpen) {
       gsap.to(galleryRef.current, { autoAlpha: 0, scale: 0.9, duration: 0.4 });
       gsap.fromTo(
         peekCardRef.current,
@@ -701,7 +682,7 @@ export default function EventPage() {
       `}</style>
 
       {/* SECTION 1: HERO */}
-      <section className="hero-section relative h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+      <section className="hero-section relative h-dvh flex flex-col items-center justify-center overflow-hidden">
         {/* Replaced expensive blur-[10px] with a cheaper radial gradient */}
         <Navbar2 />
         <div
@@ -739,11 +720,11 @@ export default function EventPage() {
       </section>
 
       {/* SECTION 2: THE SPLIT-SCREEN ORBIT ARCHIVE */}
-      <section className="relative w-full h-[100dvh] bg-[#030303] border-y border-neutral-900 flex flex-row overflow-hidden">
+      <section className="relative w-full h-dvh bg-[#030303] border-y border-neutral-900 flex flex-row overflow-hidden">
         {/* Left Side: Masked Scrollable Index */}
         <div className="w-[45%] md:w-[35%] h-full border-r border-neutral-900 flex flex-col pl-4 md:pl-16 pr-2 md:pr-4 relative z-20">
           <div className="pt-[15vh] md:pt-[20vh] pb-4 md:pb-8 bg-[#030303] z-10">
-            <p className="text-neutral-600 tracking-[0.1em] md:tracking-[0.3em] uppercase text-[9px] md:text-xs font-bold">
+            <p className="text-neutral-600 tracking-widest md:tracking-[0.3em] uppercase text-[9px] md:text-xs font-bold">
               Campaign Archive
             </p>
           </div>
@@ -795,7 +776,7 @@ export default function EventPage() {
                   setActiveIndex(index);
                 }
               }}
-              className="orbit-card absolute w-[150px] h-[220px] md:w-[280px] md:h-[420px] bg-[#0a0a0a] border border-neutral-800 rounded-xl overflow-hidden cursor-pointer shadow-2xl group transition-colors hover:border-white/50"
+              className="orbit-card absolute w-37.5 h-55 md:w-70 md:h-105 bg-[#0a0a0a] border border-neutral-800 rounded-xl overflow-hidden cursor-pointer shadow-2xl group transition-colors hover:border-white/50"
               style={{ opacity: 0 }}
             >
               <video
@@ -811,7 +792,7 @@ export default function EventPage() {
                 className="absolute inset-0 w-full h-full object-cover z-0"
               />
               <div className="absolute inset-0 bg-black/40 z-10 transition-colors group-hover:bg-black/20"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent z-10"></div>
 
               <div className="absolute inset-x-0 bottom-0 p-4 md:p-6 flex flex-col items-center text-center z-20">
                 <h3 className="text-lg md:text-2xl font-black uppercase tracking-tighter leading-none text-white mb-3 md:mb-4">
@@ -837,7 +818,7 @@ export default function EventPage() {
 
       {/* FULLSCREEN EVENT OVERLAY MODAL */}
       {selectedEvent && (
-        <div className="fixed inset-0 z-[9999] bg-black flex flex-col overflow-hidden animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-9999 bg-black flex flex-col overflow-hidden animate-in fade-in duration-300">
           <video
             src={selectedEvent.video2}
             autoPlay
@@ -848,7 +829,7 @@ export default function EventPage() {
           />
           <div className="absolute inset-0 bg-black/70 z-10"></div>
 
-          <div className="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-end z-[100] pointer-events-none">
+          <div className="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-end z-100 pointer-events-none">
             <button
               onClick={() => {
                 setSelectedEvent(null);
@@ -860,7 +841,7 @@ export default function EventPage() {
             </button>
           </div>
 
-          <div className="flex-grow flex flex-col justify-center p-6 md:p-24 relative overflow-y-auto z-20">
+          <div className="grow flex flex-col justify-center p-6 md:p-24 relative overflow-y-auto z-20">
             <div className="relative z-10 max-w-4xl mt-12 md:mt-20">
               <p className="text-white tracking-[0.3em] uppercase text-[10px] md:text-sm mb-4 md:mb-6 font-bold border border-white inline-block px-3 md:px-4 py-1 rounded-full">
                 {selectedEvent.clientName} // {selectedEvent.id}
@@ -874,13 +855,14 @@ export default function EventPage() {
             </div>
           </div>
 
-          {selectedEvent.visible && (
+          {/* CHECKING IF EVENT HAS IMAGES INSTEAD OF .visible */}
+          {selectedEvent.images && selectedEvent.images.length > 0 && (
             <>
               {/* The Peek Card (Bottom Right) */}
               <div
                 ref={peekCardRef}
                 onClick={() => setIsGalleryOpen(true)}
-                className="absolute bottom-0 right-4 md:right-24 w-32 md:w-64 h-24 md:h-40 z-[60] bg-neutral-800 rounded-t-2xl cursor-pointer shadow-[0_-10px_40px_rgba(0,0,0,0.5)] border-t border-x border-white/10 overflow-hidden group hover:-translate-y-4 transition-transform duration-300"
+                className="absolute bottom-0 right-4 md:right-24 w-32 md:w-64 h-24 md:h-40 z-60 bg-neutral-800 rounded-t-2xl cursor-pointer shadow-[0_-10px_40px_rgba(0,0,0,0.5)] border-t border-x border-white/10 overflow-hidden group hover:-translate-y-4 transition-transform duration-300"
                 style={{ transform: "translateY(200px)" }}
               >
                 <img
@@ -900,7 +882,7 @@ export default function EventPage() {
               {/* NORMAL GRID GALLERY OVERLAY */}
               <div
                 ref={galleryRef}
-                className="absolute inset-0 z-[70] invisible flex flex-col items-center justify-start p-4 md:p-8 bg-black/95 backdrop-blur-xl overflow-y-auto"
+                className="absolute inset-0 z-70 invisible flex flex-col items-center justify-start p-4 md:p-8 bg-black/95 backdrop-blur-xl overflow-y-auto"
               >
                 <div className="w-full max-w-7xl flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4 mt-8 md:mt-0 shrink-0">
                   <h2 className="text-2xl md:text-4xl font-black tracking-tight uppercase">

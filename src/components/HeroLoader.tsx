@@ -121,7 +121,7 @@ export default function HeroLoader() {
       {!isLoaderFinished && (
         <div
           ref={loaderRef}
-          className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden pointer-events-none"
+          className="fixed inset-0 z-100 bg-black flex items-center justify-center overflow-hidden pointer-events-none"
         >
           <canvas
             ref={canvasRef}

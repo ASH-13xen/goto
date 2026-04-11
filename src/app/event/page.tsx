@@ -496,7 +496,7 @@ export default function EventPage() {
     null,
   );
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
-  const [, setIsContactOpen] = useState(false);
+
 
   const orbitRef = useRef({ angle: 0 });
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -968,15 +968,17 @@ export default function EventPage() {
               the venue?
             </span>
           </h2>
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-8 md:px-10 py-4 md:py-5 bg-white text-black text-base md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300"
+          <a
+            href="https://wa.me/918817398431"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 md:px-10 py-4 md:py-5 bg-white text-black text-base md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 inline-block text-center"
           >
             <span className="relative z-10 group-hover:text-black transition-colors duration-300">
               Design an Experience
             </span>
             <div className="absolute inset-0 bg-neutral-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </button>
+          </a>
         </div>
       </section>
     </main>

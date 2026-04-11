@@ -8,7 +8,7 @@ import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactModal from "@/components/Contact";
+// Contact modal removed
 import Navbar2 from "@/components/Navbar2"; // Updated to match your standard modal import
 
 if (typeof window !== "undefined") {
@@ -33,7 +33,7 @@ const flashbackMedia = [
 
 export default function InfluencerPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
+
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   // 1. Mouse Spotlight Tracker for Hero
@@ -287,21 +287,17 @@ export default function InfluencerPage() {
             </span>
           </h2>
 
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-2xl"
+          <a
+            href="https://wa.me/918817398431"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-2xl inline-block text-center"
           >
             <span className="relative z-10">Access the Network</span>
             <div className="absolute inset-0 bg-neutral-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </button>
+          </a>
         </div>
       </section>
-
-      {/* --- CONTACT MODAL --- */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </div>
   );
 }

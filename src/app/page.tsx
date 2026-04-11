@@ -1,4 +1,4 @@
-import HeroLoader from "@/components/HeroLoader";
+import HeroSection from "@/sections/HeroSection";
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/sections/About";
 import ContactSection from "@/sections/ConatctUs";
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <HeroLoader />
+      <HeroSection />
       <TrustedBy />
       <ExpertiseSection />
       <ManifestoSection />

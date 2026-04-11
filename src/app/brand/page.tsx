@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ContactModal from "@/components/Contact"; // Adjust import path if needed
+// Contact modal removed
 import Navbar2 from "@/components/Navbar2";
 
 if (typeof window !== "undefined") {
@@ -82,7 +82,7 @@ const monolithProjects = [
 
 export default function BrandPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
+
 
   useGSAP(
     () => {
@@ -391,21 +391,17 @@ export default function BrandPage() {
             </span>
           </h2>
 
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-8 py-5 md:px-12 md:py-6 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+          <a
+            href="https://wa.me/918817398431"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 py-5 md:px-12 md:py-6 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)] inline-block text-center"
           >
             <span className="relative z-10">Start the Conversation</span>
             <div className="absolute inset-0 bg-neutral-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </button>
+          </a>
         </div>
       </section>
-
-      {/* --- 6. CONTACT MODAL INTEGRATION --- */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </div>
   );
 }

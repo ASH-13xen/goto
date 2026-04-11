@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Navbar2 from "@/components/Navbar2";
-import ContactModal from "@/components/Contact"; // Make sure this is imported
+// Contact modal removed
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -80,7 +80,7 @@ export default function OutdoorPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]); // Ref array for videos
 
-  const [isContactOpen, setIsContactOpen] = useState(false);
+
   const [selectedEvent, setSelectedEvent] = useState<(typeof EVENTS)[0] | null>(
     null,
   );
@@ -374,23 +374,19 @@ export default function OutdoorPage() {
             </span>
           </h2>
 
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300"
+          <a
+            href="https://wa.me/918817398431"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 inline-block text-center"
           >
             <span className="relative z-10 group-hover:text-black transition-colors duration-300">
               Plan a Hijack
             </span>
             <div className="absolute inset-0 bg-neutral-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </button>
+          </a>
         </div>
       </section>
-
-      {/* CONTACT MODAL */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </main>
   );
 }

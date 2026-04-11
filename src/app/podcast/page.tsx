@@ -6,7 +6,7 @@ import { useState, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import ContactModal from "@/components/Contact"; // Ensure this matches your path
+// Contact modal removed
 import Navbar from "@/components/Navbar2";
 
 if (typeof window !== "undefined") {
@@ -49,7 +49,7 @@ const GUESTS = [
 
 export default function PodcastPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
+
 
   useGSAP(
     () => {
@@ -268,20 +268,17 @@ export default function PodcastPage() {
             </span>
           </h2>
 
-          <button
-            onClick={() => setIsContactOpen(true)}
-            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-2xl"
+          <a
+            href="https://wa.me/918817398431"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative px-8 py-4 md:px-10 md:py-5 bg-white text-black text-sm md:text-xl font-black uppercase tracking-widest rounded-full overflow-hidden hover:scale-105 transition-transform duration-300 shadow-2xl inline-block text-center"
           >
             <span className="relative z-10">Secure Your Spot</span>
             <div className="absolute inset-0 bg-neutral-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-          </button>
+          </a>
         </div>
       </section>
-
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </main>
   );
 }

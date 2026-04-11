@@ -6,15 +6,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import ContactModal from "@/components/Contact";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
   // --- Modal State ---
-  const [isModalOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   // --- Drag Hint State ---
   const [showHint, setShowHint] = useState(true);
@@ -77,12 +74,12 @@ export default function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 2, defaults: { ease: "power4.out" } });
+      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
       tl.fromTo(
         ".hero-text-line",
         { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, delay: 0.2 },
+        { y: 0, opacity: 1, duration: 1 },
       );
 
       tl.fromTo(
@@ -118,7 +115,7 @@ export default function HeroSection() {
         repeat: -1,
         duration: 15,
         ease: "linear",
-        delay: 5,
+        delay: 0,
       });
     }, containerRef);
 
@@ -247,7 +244,7 @@ export default function HeroSection() {
 
             {/* --- CONTACT US BUTTON --- */}
             <button
-              onClick={() => setIsContactOpen(true)}
+              onClick={() => window.open("https://wa.me/918817398431", "_blank")}
               className={`mt-6 md:mt-8 w-fit bg-white text-black font-black uppercase tracking-widest py-3 px-8 hover:bg-neutral-200 transition-all shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] active:translate-y-1 active:shadow-none ${
                 isMobile ? "text-sm" : "text-base"
               }`}
@@ -371,7 +368,7 @@ export default function HeroSection() {
                   htmlFor="subject"
                   className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
                 >
-                  Subject
+                  Title
                 </label>
                 <input
                   type="text"
@@ -425,10 +422,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </>
   );
 }

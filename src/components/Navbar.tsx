@@ -3,11 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import ContactModal from "./Contact"; // NOTE: Adjust this import path depending on where your Contact.tsx is located
-
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   // Prevent background scrolling when the mobile menu is open
   useEffect(() => {
@@ -53,14 +50,7 @@ export default function Navbar() {
 
           {/* RIGHT ACTION ITEMS */}
           <div className="flex items-center gap-3 md:gap-4">
-            {/* CTA BUTTON - Triggers Modal */}
-            <button
-              onClick={() => setIsContactOpen(true)}
-              className="group flex items-center gap-1.5 md:gap-2 bg-black text-white px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-neutral-800 transition-colors"
-            >
-              <span>Let's Talk</span>
-              <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </button>
+
 
             {/* MOBILE HAMBURGER TOGGLE */}
             <button
@@ -107,12 +97,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* GLOBAL CONTACT MODAL */}
-      <ContactModal
-        isOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
     </>
   );
 }

@@ -150,7 +150,7 @@ export default function HeroSection() {
     <>
       <div
         ref={containerRef}
-        className="relative w-full min-h-dvh bg-[#F9F9F9] text-black font-sans overflow-hidden flex flex-col pt-24"
+        className="relative w-full min-h-dvh bg-[#F9F9F9] text-black font-sans overflow-hidden flex flex-col pt-[140px] md:pt-24"
       >
         {/* --- SUBTLE SLANT LINES BACKGROUND --- */}
         <div
@@ -278,7 +278,7 @@ export default function HeroSection() {
                 <div className="w-12 h-1 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
               </div>
             ) : (
-              <div className="flex gap-1.5 items-center justify-center translate-x-2">
+               <div className="flex gap-1.5 items-center justify-center translate-x-2">
                 <div className="w-1 h-12 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
                 <div className="w-1 h-12 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
               </div>
@@ -297,9 +297,9 @@ export default function HeroSection() {
         {/* --- MAIN CONTENT --- */}
         <div className="relative z-10 grow w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center xl:items-start justify-between px-5 lg:px-3 py-12 gap-16 xl:gap-8">
           {/* LEFT COLUMN: Text Content */}
-          <div className="flex flex-col items-start text-left w-full xl:w-1/2 pl-3 pt-5 md:pl-0">
+          <div className="flex flex-col items-start text-left w-full xl:w-1/2 pl-3 pt-5 md:pl-[100px] xl:pl-[60px]">
             <div className="overflow-hidden pb-2 w-full md:mt-20">
-              <h1 className="hero-text-line font-black tracking-tighter uppercase text-[12vw] md:text-[8vw] xl:text-[5.5vw] leading-none whitespace-nowrap text-black">
+              <h1 className="hero-text-line font-black tracking-tighter uppercase text-[12vw] min-[400px]:text-[10vw] sm:text-[9vw] md:text-[7vw] lg:text-[6vw] xl:text-[5.5vw] leading-[1.1] text-black w-full break-words">
                 GO-TO FRIEND
               </h1>
             </div>

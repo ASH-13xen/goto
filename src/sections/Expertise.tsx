@@ -225,7 +225,8 @@ const ExpertiseSlider = ({
           </Link>
         ))}
 
-
+        {/* Spacer to prevent Safari/Webkit flex scroll bugs from cutting off right padding */}
+        <div className="w-[1px] md:w-[5vw] lg:w-0 shrink-0" />
       </div>
     </div>
   );
@@ -249,20 +250,18 @@ const ExpertiseSection = () => {
       mm.add("(min-width: 1024px)", () => {
         const sliderContent = document.querySelector(
           ".expertise-slider-content",
-        );
+        ) as HTMLElement | null;
+        const sliderWrapper = document.querySelector(
+          ".expertise-slider-wrapper",
+        ) as HTMLElement | null;
 
-        if (!sliderContent) return;
-
-        const totalScrollWidth = sliderContent.scrollWidth;
-        const windowWidth = window.innerWidth;
-
-        const xMovement = -(totalScrollWidth - windowWidth * 0.55);
+        if (!sliderContent || !sliderWrapper) return;
 
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: triggerRef.current,
             start: "top top",
-            end: "+=2000",
+            end: () => `+=${sliderContent.scrollWidth}`,
             pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
@@ -270,7 +269,7 @@ const ExpertiseSection = () => {
         });
 
         tl.to(sliderContent, {
-          x: xMovement,
+          x: () => -(sliderContent.scrollWidth - sliderWrapper.clientWidth),
           ease: "none",
         });
 
@@ -309,7 +308,7 @@ const ExpertiseSection = () => {
           </div>
 
           {/* RIGHT: Slider Area */}
-          <div className="w-full lg:w-auto h-auto lg:h-full flex-1 overflow-hidden relative z-10 pb-12 lg:pb-0 pt-4 lg:pt-0">
+          <div className="expertise-slider-wrapper w-full lg:w-auto h-auto lg:h-full flex-1 overflow-hidden relative z-10 pb-12 lg:pb-0 pt-4 lg:pt-0">
             {/* Pass the click handler to the slider */}
             <ExpertiseSlider onContactClick={() => setIsContactOpen(true)} />
           </div>

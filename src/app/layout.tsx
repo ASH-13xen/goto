@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     "creative agency",
     "Go-To Friend",
   ],
+  icons: {
+    icon: "/logos/gotologo.png",
+    apple: "/logos/gotologo.png", // Good for iOS home screen bookmarks
+  },
 
   // Open Graph for LinkedIn, Facebook, iMessage
   openGraph: {

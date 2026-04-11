@@ -18,7 +18,6 @@ const teamMembers = [
   { id: "shiv", name: "SHIV SHANKAR KUMAR", role: "Cinematographer + Video Editor", image: "/team/shiv.jpeg" },
   { id: "aditya", name: "ADITYA SINGH", role: "Digital Marketer", image: "/team/aditya.jpeg" },
   { id: "bhavini", name: "BHAVINI SINGH", role: "Content Manager", image: "/team/bhavini.jpeg" },
-  
   { id: "muskan", name: "MUSKAN SACHDEV", role: "Social Media Manager", image: "/team/muskan.jpeg" },
   { id: "arvind", name: "ARVIND", role: "Videographer + Video Editor", image: "/team/arvind.jpeg" },
   { id: "juhika", name: "JUHIKA PARADKAR", role: "HR", image: "/team/juhika.jpeg" },
@@ -30,9 +29,11 @@ const teamMembers = [
 
 export default function TeamSection() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const containerRef = useRef(null);
-  const listRefs = useRef([]);
-  const imageRef = useRef(null);
+  
+  // Explicitly typed refs to satisfy TypeScript
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const listRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const imageRef = useRef<HTMLImageElement | null>(null);
 
   useGSAP(() => {
     let mm = gsap.matchMedia();
@@ -141,7 +142,7 @@ export default function TeamSection() {
               return (
                 <li
                   key={member.id}
-                  ref={(el) => (listRefs.current[index] = el)}
+                  ref={(el) => { listRefs.current[index] = el; }}
                   className="py-16 md:py-32 flex flex-col justify-center transition-opacity duration-500"
                   style={{ opacity: isActive ? 1 : 0.3 }}
                 >

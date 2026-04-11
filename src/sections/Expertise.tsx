@@ -225,20 +225,7 @@ const ExpertiseSlider = ({
           </Link>
         ))}
 
-        {/* CTA Card at the end */}
-        <div className="relative flex-none w-[85vw] md:w-[45vw] lg:w-[28vw] h-[60vh] md:h-[60vh] lg:h-[70vh] flex items-center justify-center bg-black border border-neutral-800 rounded-sm">
-          <div className="text-center p-6 md:p-8">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white uppercase mb-6 leading-none">
-              Ready to <br /> Scale?
-            </h2>
-            <button
-              onClick={onContactClick}
-              className="bg-white text-black px-6 py-3 md:px-8 md:py-3 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform text-sm md:text-base"
-            >
-              Get in Touch
-            </button>
-          </div>
-        </div>
+
       </div>
     </div>
   );

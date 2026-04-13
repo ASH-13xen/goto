@@ -11,8 +11,6 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
 
-  // --- Modal State ---
-
   // --- Drag Hint State ---
   const [showHint, setShowHint] = useState(true);
 
@@ -47,21 +45,20 @@ export default function HeroSection() {
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging || !containerRef.current) return;
 
-    // Get exact component position so scrolling doesn't break the math on mobile
     const rect = containerRef.current.getBoundingClientRect();
 
     if (isMobile) {
       // Mobile: Vertical Drag (Top to Bottom)
-      const maxHeight = window.innerHeight * 0.85; // Let them drag it 85% down
-      let newHeight = e.clientY - rect.top; // Calculate relative to component, not screen
-      if (newHeight < 120) newHeight = 120; // Mobile minimum
+      const maxHeight = window.innerHeight * 0.85; 
+      let newHeight = e.clientY - rect.top; 
+      if (newHeight < 120) newHeight = 120; 
       if (newHeight > maxHeight) newHeight = maxHeight;
       setSliderSize(newHeight);
     } else {
       // Desktop: Horizontal Drag (Left to Right)
       const maxWidth = window.innerWidth * 0.75;
       let newWidth = e.clientX - rect.left;
-      if (newWidth < 80) newWidth = 80; // Desktop minimum reverted to 80
+      if (newWidth < 80) newWidth = 80; 
       if (newWidth > maxWidth) newWidth = maxWidth;
       setSliderSize(newWidth);
     }
@@ -150,7 +147,7 @@ export default function HeroSection() {
     <>
       <div
         ref={containerRef}
-        className="relative w-full min-h-dvh bg-[#F9F9F9] text-black font-sans overflow-hidden flex flex-col pt-[140px] md:pt-24"
+        className="relative w-full min-h-dvh bg-[#F9F9F9] text-black font-sans overflow-hidden flex flex-col"
       >
         {/* --- SUBTLE SLANT LINES BACKGROUND --- */}
         <div
@@ -165,7 +162,7 @@ export default function HeroSection() {
 
         {/* --- DRAGGABLE SLIDER OVERLAY --- */}
         <div
-          className={`absolute top-0 left-0 bg-black z-60 flex items-center overflow-hidden shadow-2xl ${
+          className={`absolute top-0 left-0 bg-black z-[60] flex items-center overflow-hidden shadow-2xl ${
             isMobile
               ? "w-full border-b-2 border-white"
               : "h-full border-r-2 border-white"
@@ -194,7 +191,7 @@ export default function HeroSection() {
             className={`absolute left-0 top-0 flex flex-col justify-center text-white z-10 ${
               isMobile
                 ? "w-full h-dvh px-6 pb-20"
-                : "h-full w-225 pl-20 pr-24 py-32"
+                : "h-full w-[900px] pl-20 pr-24 py-32"
             }`}
           >
             {/* Metrics Row */}
@@ -202,12 +199,16 @@ export default function HeroSection() {
               className={`flex flex-wrap ${isMobile ? "gap-2 mb-4" : "gap-4 mb-8"}`}
             >
               <div
-                className={`bg-white text-black font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-xs md:text-sm"}`}
+                className={`bg-white text-black font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] ${
+                  isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-xs md:text-sm"
+                }`}
               >
                 25+ Brands Partnered
               </div>
               <div
-                className={`bg-white text-black font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] ${isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-xs md:text-sm"}`}
+                className={`bg-white text-black font-black uppercase tracking-widest shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] ${
+                  isMobile ? "px-3 py-1.5 text-xs" : "px-4 py-2 text-xs md:text-sm"
+                }`}
               >
                 30+ Events Hosted
               </div>
@@ -218,21 +219,29 @@ export default function HeroSection() {
             </p>
 
             <h2
-              className={`uppercase font-black tracking-widest text-[#F9F9F9] drop-shadow-lg ${isMobile ? "text-4xl leading-tight mb-4" : "text-5xl md:text-7xl whitespace-nowrap mb-6"}`}
+              className={`uppercase font-black tracking-widest text-[#F9F9F9] drop-shadow-lg ${
+                isMobile
+                  ? "text-4xl leading-tight mb-4"
+                  : "text-5xl md:text-7xl whitespace-nowrap mb-6"
+              }`}
             >
               Let's Grow Together
             </h2>
 
             <div className="max-w-xl">
               <p
-                className={`text-neutral-300 leading-relaxed ${isMobile ? "text-base mb-4" : "text-lg md:text-2xl mb-6"}`}
+                className={`text-neutral-300 leading-relaxed ${
+                  isMobile ? "text-base mb-4" : "text-lg md:text-2xl mb-6"
+                }`}
               >
                 Hit your target audience with absolute precision. We combine
                 strategy and creativity to ensure your brand always hits the
                 bullseye.
               </p>
               <p
-                className={`text-neutral-400 leading-relaxed border-l-2 border-white pl-4 ${isMobile ? "text-sm hidden sm:block" : "text-base md:text-lg"}`}
+                className={`text-neutral-400 leading-relaxed border-l-2 border-white pl-4 ${
+                  isMobile ? "text-sm hidden sm:block" : "text-base md:text-lg"
+                }`}
               >
                 Our state-of-the-art facility is built for creators,
                 visionaries, and brands ready to scale. Whether it's high-end
@@ -278,7 +287,7 @@ export default function HeroSection() {
                 <div className="w-12 h-1 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
               </div>
             ) : (
-               <div className="flex gap-1.5 items-center justify-center translate-x-2">
+              <div className="flex gap-1.5 items-center justify-center translate-x-2">
                 <div className="w-1 h-12 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
                 <div className="w-1 h-12 bg-white/50 rounded-full group-hover:bg-white/80 transition-colors" />
               </div>
@@ -294,134 +303,145 @@ export default function HeroSection() {
           }}
         />
 
-        {/* --- MAIN CONTENT --- */}
-        <div className="relative z-10 grow w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center xl:items-start justify-between px-5 lg:px-3 py-12 gap-16 xl:gap-8">
-          {/* LEFT COLUMN: Text Content */}
-          <div className="flex flex-col items-start text-left w-full xl:w-1/2 pl-3 pt-5 md:pl-[100px] xl:pl-[60px]">
-            <div className="overflow-hidden pb-2 w-full md:mt-20">
-              <h1 className="hero-text-line font-black tracking-tighter uppercase text-[12vw] min-[400px]:text-[10vw] sm:text-[9vw] md:text-[7vw] lg:text-[6vw] xl:text-[5.5vw] leading-[1.1] text-black w-full break-words">
-                GO-TO FRIEND
-              </h1>
+        {/* --- CONTENT WRAPPER --- */}
+        <div className="relative z-10 flex flex-col min-h-dvh w-full pt-[120px] md:pt-0 md:pl-[80px]">
+          
+          {/* --- MAIN PAGE CONTENT --- */}
+          {/* Using items-center and justify-center to stack in the middle for tablet/mobile.
+              Reverts to xl:justify-between and xl:items-center for side-by-side desktop layout */}
+          <div className="grow w-full max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-center xl:justify-between px-6 sm:px-10 md:px-12 py-12 lg:py-29 gap-12 xl:gap-8">
+            
+            {/* LEFT COLUMN: Text Content */}
+            {/* Centers text internally when stacked, left-aligns on desktop (xl:items-start xl:text-left) */}
+            <div className="flex flex-col items-center xl:items-start text-center xl:text-left w-full xl:w-1/2 mt-4 xl:mt-0">
+              <div className="overflow-hidden pb-2 w-full">
+                <h1 className="hero-text-line font-black tracking-tighter uppercase text-[13vw] sm:text-[10vw] md:text-[8vw] lg:text-[7vw] xl:text-[5.5vw] leading-[1.05] text-black w-full break-words">
+                  GO-TO FRIEND
+                </h1>
+              </div>
+
+              {/* Added mx-auto xl:mx-0 so the divider centers nicely when stacked */}
+              <div className="hero-divider w-full max-w-[80%] h-1 bg-black my-6 md:my-8 mx-auto xl:ml-0" />
+
+              <div className="hero-box inline-block border-2 border-black px-4 py-2 text-sm md:text-lg font-bold uppercase tracking-widest bg-white">
+                Where Growth Meets Strategy
+              </div>
+
+              {/* Added mx-auto xl:mx-0 for the description centering */}
+              <p className="hero-desc text-base md:text-xl font-medium tracking-wide text-neutral-600 max-w-lg mt-6 leading-relaxed bg-[#F9F9F9]/80 backdrop-blur-md mx-auto xl:mx-0">
+                Visibility, Creativity, and Strategy perfectly engineered for your
+                brand. Your Go-To Friend <br />
+                is right here.
+              </p>
             </div>
 
-            <div className="hero-divider w-full max-w-[80%] h-0.75 bg-black my-6 md:my-8" />
+            {/* RIGHT COLUMN: Contact Form */}
+            {/* Will automatically pull to the center of the available space due to parent items-center */}
+            <div className="form-container w-full max-w-xl xl:max-w-md shrink-0 bg-white border-2 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-[51]">
+              <div className="overflow-hidden mb-6">
+                <h2 className="form-element text-2xl font-black uppercase tracking-tight text-center xl:text-left">
+                  Schedule A Meeting
+                </h2>
+              </div>
 
-            <div className="hero-box inline-block border-2 border-black px-4 py-2 text-sm md:text-lg font-bold uppercase tracking-widest bg-white">
-              Where Growth Meets Strategy
+              <form onSubmit={handleFormSubmit} className="flex flex-col gap-3">
+                {/* --- NAME FIELD --- */}
+                <div className="flex flex-col gap-1">
+                  <label
+                    htmlFor="name"
+                    className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
+                  >
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
+                    required
+                  />
+                </div>
+
+                {/* EMAIL FIELD */}
+                <div className="flex flex-col gap-1 mt-1">
+                  <label
+                    htmlFor="email"
+                    className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
+                  >
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="hello@brand.com"
+                    className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
+                    required
+                  />
+                </div>
+
+                {/* SUBJECT FIELD */}
+                <div className="flex flex-col gap-1 mt-1">
+                  <label
+                    htmlFor="subject"
+                    className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
+                  >
+                    Title
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    placeholder="Let's build something"
+                    className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
+                    required
+                  />
+                </div>
+
+                {/* MESSAGE FIELD */}
+                <div className="flex flex-col gap-1 mt-1">
+                  <label
+                    htmlFor="body"
+                    className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="body"
+                    name="body"
+                    rows={3}
+                    placeholder="Tell us about your goals..."
+                    className="form-element w-full border-2 border-black bg-transparent p-3 focus:outline-none focus:border-neutral-400 transition-colors font-medium mt-1 resize-none rounded-none"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="form-element mt-3 w-full bg-black text-white font-black uppercase tracking-widest py-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                >
+                  Send Request
+                </button>
+              </form>
             </div>
-
-            <p className="hero-desc text-sm md:text-xl font-medium tracking-wide text-neutral-600 max-w-lg mt-6 leading-relaxed bg-[#F9F9F9]/80 backdrop-blur-md">
-              Visibility, Creativity, and Strategy perfectly engineered for your
-              brand. Your Go-To Friend <br />
-              is right here.
-            </p>
           </div>
 
-          {/* RIGHT COLUMN: Contact Form */}
-          <div className="form-container w-full max-w-md xl:w-112.5 shrink-0 bg-white border-2 border-black p-6 md:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-51 mt-4 xl:mt-0">
-            <div className="overflow-hidden mb-6">
-              <h2 className="form-element text-2xl font-black uppercase tracking-tight">
-                Schedule A Meeting
-              </h2>
+          {/* --- INFINITE MARQUEE --- */}
+          <div
+            ref={marqueeRef}
+            className="relative z-20 w-full bg-black text-white py-2 md:py-3 overflow-hidden flex whitespace-nowrap border-t-2 border-white mt-auto"
+          >
+            <div className="marquee-inner flex items-center gap-6 text-base md:text-2xl font-black uppercase tracking-widest">
+              <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
+              <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
+              <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
+              <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
             </div>
-
-            <form onSubmit={handleFormSubmit} className="flex flex-col gap-3">
-              {/* --- NEW NAME FIELD --- */}
-              <div className="flex flex-col gap-1">
-                <label
-                  htmlFor="name"
-                  className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
-                >
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="John Doe"
-                  className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
-                  required
-                />
-              </div>
-
-              {/* EMAIL FIELD */}
-              <div className="flex flex-col gap-1 mt-1">
-                <label
-                  htmlFor="email"
-                  className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
-                >
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="hello@brand.com"
-                  className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
-                  required
-                />
-              </div>
-
-              {/* SUBJECT FIELD */}
-              <div className="flex flex-col gap-1 mt-1">
-                <label
-                  htmlFor="subject"
-                  className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
-                >
-                  Title
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder="Let's build something"
-                  className="form-element w-full border-b-2 border-black bg-transparent py-2 px-1 focus:outline-none focus:border-neutral-400 transition-colors font-medium rounded-none"
-                  required
-                />
-              </div>
-
-              {/* MESSAGE FIELD - rows reduced to 3 to balance size */}
-              <div className="flex flex-col gap-1 mt-1">
-                <label
-                  htmlFor="body"
-                  className="form-element text-xs font-bold uppercase tracking-widest text-neutral-500"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="body"
-                  name="body"
-                  rows={3}
-                  placeholder="Tell us about your goals..."
-                  className="form-element w-full border-2 border-black bg-transparent p-3 focus:outline-none focus:border-neutral-400 transition-colors font-medium mt-1 resize-none rounded-none"
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="form-element mt-3 w-full bg-black text-white font-black uppercase tracking-widest py-4 border-2 border-black hover:bg-white hover:text-black transition-all duration-300 active:translate-y-1 active:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
-              >
-                Send Request
-              </button>
-            </form>
           </div>
-        </div>
 
-        {/* --- INFINITE MARQUEE --- */}
-        <div
-          ref={marqueeRef}
-          className="relative z-20 w-full bg-black text-white py-2 md:py-3 overflow-hidden flex whitespace-nowrap border-t-2 border-white mt-auto"
-        >
-          <div className="marquee-inner flex items-center gap-6 text-base md:text-2xl font-black uppercase tracking-widest">
-            <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
-            <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
-            <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
-            <span>// VISIBILITY // CREATIVITY // GROWTH // STRATEGY</span>
-          </div>
         </div>
       </div>
-
     </>
   );
 }

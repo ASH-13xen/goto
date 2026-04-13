@@ -44,8 +44,8 @@ export default function TeamSection() {
         if (!el) return;
         ScrollTrigger.create({
           trigger: el,
-          start: "top 50%",
-          end: "bottom 50%",
+          start: "center 50%",
+          end: "center 50%",
           onEnter: () => setActiveIndex(index),
           onEnterBack: () => setActiveIndex(index),
         });
@@ -58,8 +58,8 @@ export default function TeamSection() {
         if (!el) return;
         ScrollTrigger.create({
           trigger: el,
-          start: "top 80%",
-          end: "bottom 80%",
+          start: "center 80%",
+          end: "center 80%",
           onEnter: () => setActiveIndex(index),
           onEnterBack: () => setActiveIndex(index),
         });

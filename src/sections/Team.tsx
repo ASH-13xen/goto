@@ -96,7 +96,7 @@ export default function TeamSection() {
   }, [activeIndex]);
 
   return (
-    <section ref={containerRef} className="relative w-full bg-neutral-50 text-neutral-900 pt-16 md:pt-24">
+    <section id="team" ref={containerRef} className="relative w-full bg-neutral-50 text-neutral-900 pt-16 md:pt-24">
       
       {/* --- NEW MAIN SECTION HEADING --- */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12 text-center md:text-left">
@@ -124,17 +124,8 @@ export default function TeamSection() {
         </div>
 
         {/* --- SCROLLING LIST CONTAINER --- */}
-        <div className="w-full md:w-1/2 z-10 order-2 md:order-1 px-6 md:px-12 pt-8 pb-[20vh] md:py-[30vh]">
+        <div className="w-full md:w-1/2 z-10 order-2 md:order-1 px-6 md:px-20 pt-32 pb-[20vh] md:pt-20 md:pb-[100vh]">
           
-          <div className="mb-16 md:mb-24">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-              The Roster
-            </h2>
-            <p className="text-neutral-500 mt-4 max-w-sm text-sm md:text-base">
-              Scroll to meet the minds behind the magic.
-            </p>
-          </div>
-
           <ul className="flex flex-col">
             {teamMembers.map((member, index) => {
               const isActive = index === activeIndex;
@@ -143,7 +134,7 @@ export default function TeamSection() {
                 <li
                   key={member.id}
                   ref={(el) => { listRefs.current[index] = el; }}
-                  className="py-16 md:py-32 flex flex-col justify-center transition-opacity duration-500"
+                  className="py-16 md:py-50 flex flex-col justify-center transition-opacity duration-500"
                   style={{ opacity: isActive ? 1 : 0.3 }}
                 >
                   <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.85] tracking-tighter">

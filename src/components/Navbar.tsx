@@ -105,6 +105,13 @@ export default function Navbar() {
             >
               About
             </a>
+            <a
+              href="#team"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-neutral-500 transition-colors"
+            >
+              Team
+            </a>
           </div>
         </div>
       </nav>

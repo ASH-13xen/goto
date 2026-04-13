@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -34,6 +34,14 @@ export default function TeamSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRefs = useRef<(HTMLLIElement | null)[]>([]);
   const imageRef = useRef<HTMLImageElement | null>(null);
+
+  // Preload Images to prevent lag on scroll
+  useEffect(() => {
+    teamMembers.forEach((member) => {
+      const img = new window.Image();
+      img.src = member.image;
+    });
+  }, []);
 
   useGSAP(() => {
     let mm = gsap.matchMedia();

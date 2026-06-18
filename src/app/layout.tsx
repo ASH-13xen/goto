@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,14 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  // Replace this with your actual production domain
+// Default Static Metadata fallback (if Control Panel is offline during build-time)
+const DEFAULT_METADATA: Metadata = {
   metadataBase: new URL("https://www.gotofriend.in"),
-
-  title: {
-    default: "Go-To Friend | Experiential Marketing & Strategy",
-    template: "%s | Go-To Friend", // Automatically appends the brand name to subpages
-  },
+  title: "Go-To Friend | Experiential Marketing & Strategy",
   description:
     "Visibility, Creativity, and Strategy perfectly engineered for your brand. Your premium marketing and experiential hub in Raipur.",
   keywords: [
@@ -32,54 +29,108 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: "/logos/gotologo.png",
-    apple: "/logos/gotologo.png", // Good for iOS home screen bookmarks
+    apple: "/logos/gotologo.png",
   },
-
-  // Open Graph for LinkedIn, Facebook, iMessage
   openGraph: {
     title: "Go-To Friend | Experiential Marketing & Strategy",
-    description:
-      "Visibility, Creativity, and Strategy perfectly engineered for your brand.",
-    url: "https://www.gotofriend.com",
+    description: "Visibility, Creativity, and Strategy perfectly engineered for your brand.",
+    url: "https://www.gotofriend.in",
     siteName: "Go-To Friend",
-    images: [
-      {
-        url: "/og-image.jpg", // Create an 1200x630 image and put it in your public folder
-        width: 1200,
-        height: 630,
-        alt: "Go-To Friend Brand Image",
-      },
-    ],
     locale: "en_IN",
     type: "website",
   },
-
-  // Twitter Cards for X sharing
   twitter: {
     card: "summary_large_image",
     title: "Go-To Friend | Experiential Marketing",
-    description:
-      "Visibility, Creativity, and Strategy perfectly engineered for your brand.",
-    images: ["/og-image.jpg"], // Uses the same image as above
+    description: "Visibility, Creativity, and Strategy perfectly engineered for your brand.",
   },
-
-  // Tells search engines the primary URL to prevent duplicate content issues
   alternates: {
     canonical: "/",
   },
 };
 
-export default function RootLayout({
+// Export static fallback metadata so Next.js renders it by default
+export const metadata = DEFAULT_METADATA;
+
+// Fetch site-wide tracking settings from Control Panel
+async function getTrackerConfig() {
+  const CONTROL_PANEL_API = process.env.NEXT_PUBLIC_SEO_API_URL || 'http://localhost:3000/api';
+  try {
+    const res = await fetch(`${CONTROL_PANEL_API}/tracker-config?siteId=gotolatest`, {
+      next: { revalidate: 3600 } // Cache for 1 hour
+    });
+    if (res.ok) {
+      return await res.json();
+    }
+  } catch (err) {
+    console.warn('[SEO] Failed to fetch tracker configuration. Using local defaults.');
+  }
+  return null;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const tracker = await getTrackerConfig();
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        {/* Inject Google Search Console verification meta tag */}
+        {tracker?.searchConsoleTag && (
+          <span dangerouslySetInnerHTML={{ __html: tracker.searchConsoleTag }} />
+        )}
+
+        {/* Inject custom raw head scripts (Hotjar, Tag Manager, styles, etc.) */}
+        {tracker?.headerScripts && (
+          <span dangerouslySetInnerHTML={{ __html: tracker.headerScripts }} />
+        )}
+
+        {/* Inject Google Analytics (GA4) scripts */}
+        {tracker?.googleAnalyticsId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${tracker.googleAnalyticsId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${tracker.googleAnalyticsId}');
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Inject Meta (Facebook) Pixel script */}
+        {tracker?.metaPixelId && (
+          <Script id="fb-pixel" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${tracker.metaPixelId}');
+              fbq('track', 'PageView');
+            `}
+          </Script>
+        )}
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
+
+        {/* Inject custom raw footer scripts (like chat widgets, popups, etc.) */}
+        {tracker?.footerScripts && (
+          <span dangerouslySetInnerHTML={{ __html: tracker.footerScripts }} />
+        )}
       </body>
     </html>
   );

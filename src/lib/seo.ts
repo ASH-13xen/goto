@@ -1,4 +1,5 @@
-const CONTROL_PANEL_API = process.env.NEXT_PUBLIC_SEO_API_URL || 'http://localhost:3000/api';
+import { getControlPanelApi } from './api';
+const CONTROL_PANEL_API = getControlPanelApi();
 const SITE_ID = 'gotolatest';
 
 export interface SeoMetaData {

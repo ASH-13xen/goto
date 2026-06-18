@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
+import { getControlPanelApi } from "@/lib/api";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const CONTROL_PANEL_API = process.env.NEXT_PUBLIC_SEO_API_URL || 'http://localhost:3000/api';
+  const CONTROL_PANEL_API = getControlPanelApi();
   const baseUrl = "https://www.gotofriend.in";
 
   try {

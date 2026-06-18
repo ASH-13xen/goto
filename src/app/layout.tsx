@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { getControlPanelApi } from "@/lib/api";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,7 +55,7 @@ export const metadata = DEFAULT_METADATA;
 
 // Fetch site-wide tracking settings from Control Panel
 async function getTrackerConfig() {
-  const CONTROL_PANEL_API = process.env.NEXT_PUBLIC_SEO_API_URL || 'http://localhost:3000/api';
+  const CONTROL_PANEL_API = getControlPanelApi();
   try {
     const res = await fetch(`${CONTROL_PANEL_API}/tracker-config?siteId=gotolatest`, {
       next: { revalidate: 3600 } // Cache for 1 hour

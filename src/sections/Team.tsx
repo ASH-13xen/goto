@@ -17,14 +17,10 @@ const teamMembers = [
   { id: "uddeshy", name: "UDDESHY MISHRA", role: "Graphic Designer", image: "/team/uddeshy.jpeg" },
   { id: "shiv", name: "SHIV SHANKAR KUMAR", role: "Cinematographer + Video Editor", image: "/team/shiv.jpeg" },
   { id: "aditya", name: "ADITYA SINGH", role: "Digital Marketer", image: "/team/aditya.jpeg" },
-  { id: "bhavini", name: "BHAVINI SINGH", role: "Content Manager", image: "/team/bhavini.jpeg" },
   { id: "muskan", name: "MUSKAN SACHDEV", role: "Social Media Manager", image: "/team/muskan.jpeg" },
   { id: "arvind", name: "ARVIND", role: "Videographer + Video Editor", image: "/team/arvind.jpeg" },
   { id: "juhika", name: "JUHIKA PARADKAR", role: "HR", image: "/team/juhika.jpeg" },
-  { id: "tanya", name: "TANYA KRISHNANI", role: "Account Manager (RP)", image: "/team/tanya.jpeg" },
   { id: "rajni", name: "RAJNI GANDHA", role: "Video Editor", image: "/team/rajni.jpeg" },
-  { id: "anamika", name: "ANAMIKA SONWANI", role: "Sales Executive", image: "/team/anamika.jpeg" },
-  { id: "bhumi", name: "BHUMI PINJANI", role: "Account Manager (GOTO)", image: "/team/bhumi.jpeg" },
 ];
 
 export default function TeamSection() {

@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next";
-import { getControlPanelApi } from "@/lib/api";
+import { getControlPanelApi, fetchWithTimeout } from "@/lib/api";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const CONTROL_PANEL_API = getControlPanelApi();
   const baseUrl = "https://www.gotofriend.in";
 
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/sitemap?siteId=gotolatest`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/sitemap?siteId=gotolatest`, {
       next: { revalidate: 1800 } // Cache sitemap array query for 30 minutes
     });
 

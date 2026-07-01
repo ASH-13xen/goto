@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next";
-import { getControlPanelApi } from "@/lib/api";
+import { getControlPanelApi, fetchWithTimeout } from "@/lib/api";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const CONTROL_PANEL_API = getControlPanelApi();
   const baseUrl = "https://www.gotofriend.in";
 
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/robots?siteId=gotolatest`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/robots?siteId=gotolatest`, {
       next: { revalidate: 3600 } // Cache robots config for 1 hour
     });
     

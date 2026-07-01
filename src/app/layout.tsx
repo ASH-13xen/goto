@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import { getControlPanelApi } from "@/lib/api";
+import { getControlPanelApi, fetchWithTimeout } from "@/lib/api";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,7 +57,7 @@ export const metadata = DEFAULT_METADATA;
 async function getTrackerConfig() {
   const CONTROL_PANEL_API = getControlPanelApi();
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/tracker-config?siteId=gotolatest`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/tracker-config?siteId=gotolatest`, {
       next: { revalidate: 3600 } // Cache for 1 hour
     });
     if (res.ok) {

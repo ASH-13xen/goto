@@ -1,4 +1,4 @@
-import { getControlPanelApi } from './api';
+import { getControlPanelApi, fetchWithTimeout } from './api';
 const CONTROL_PANEL_API = getControlPanelApi();
 const SITE_ID = 'gotolatest';
 
@@ -28,7 +28,7 @@ export interface SeoMetaData {
 // Fetch dynamic metadata for a specific route path
 export async function getSeoConfig(path: string): Promise<SeoMetaData | null> {
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/seo-config?siteId=${SITE_ID}&path=${encodeURIComponent(path)}`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/seo-config?siteId=${SITE_ID}&path=${encodeURIComponent(path)}`, {
       next: { revalidate: 3600 }, // Cache on Next.js server for 1 hour
     });
     if (!res.ok) return null;
@@ -42,7 +42,7 @@ export async function getSeoConfig(path: string): Promise<SeoMetaData | null> {
 // Fetch all published blogs
 export async function getBlogs(page = 1, limit = 10) {
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/blogs?siteId=${SITE_ID}&page=${page}&limit=${limit}&publishedOnly=true`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/blogs?siteId=${SITE_ID}&page=${page}&limit=${limit}&publishedOnly=true`, {
       next: { revalidate: 1800 }, // Cache list for 30 minutes
     });
     if (!res.ok) return { blogs: [], pagination: { total: 0, page, limit, totalPages: 0 } };
@@ -56,7 +56,7 @@ export async function getBlogs(page = 1, limit = 10) {
 // Fetch details for a specific blog post
 export async function getBlogBySlug(slug: string) {
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/blogs/${slug}?siteId=${SITE_ID}`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/blogs/${slug}?siteId=${SITE_ID}`, {
       next: { revalidate: 1800 },
     });
     if (!res.ok) return null;
@@ -77,7 +77,7 @@ export async function submitMarketingLead(formData: {
   metadata?: Record<string, any>;
 }) {
   try {
-    const res = await fetch(`${CONTROL_PANEL_API}/leads`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/leads`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

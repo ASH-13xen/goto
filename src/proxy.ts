@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getControlPanelApi } from './lib/api';
+import { getControlPanelApi, fetchWithTimeout } from './lib/api';
 
 export default async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -19,7 +19,7 @@ export default async function proxy(request: NextRequest) {
 
   try {
     // Fetch active redirects list from the SEO Control Panel API
-    const res = await fetch(`${CONTROL_PANEL_API}/redirects?siteId=gotolatest`, {
+    const res = await fetchWithTimeout(`${CONTROL_PANEL_API}/redirects?siteId=gotolatest`, {
       next: { revalidate: 300 } // Cache active redirects list for 5 minutes
     });
 
